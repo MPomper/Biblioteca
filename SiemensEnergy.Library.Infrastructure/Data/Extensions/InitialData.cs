@@ -4,7 +4,7 @@ namespace SiemensEnergy.Library.Infrastructure.Data.Extensions
 {
     internal class InitialData
     {
-        public static IEnumerable<Genero> Customers =>
+        public static IEnumerable<Genero> Generos =>
         new List<Genero>
         {
             new Genero { Descricao = "Romance"},

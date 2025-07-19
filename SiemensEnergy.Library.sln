@@ -11,6 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiemensEnergy.Library.Domai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiemensEnergy.Library.Infrastructure", "SiemensEnergy.Library.Infrastructure\SiemensEnergy.Library.Infrastructure.csproj", "{3AC6F822-BC8F-4DDC-9B8D-897AC2172D7D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{159E2CBD-E1C6-4F0C-B9BA-CCC661D31866}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
