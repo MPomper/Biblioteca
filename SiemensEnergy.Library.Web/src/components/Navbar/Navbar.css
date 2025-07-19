@@ -1,0 +1,26 @@
+.navbar {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  background-color: #641e8c;
+  padding: 10px 20px !important;
+  color: white;
+}
+
+.navbar h2 a {
+  color: #009999;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.nav-links a {
+  color: #009999;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links .active {
+  text-decoration: underline;
+}
