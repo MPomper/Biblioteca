@@ -31,6 +31,12 @@ cd Biblioteca
 # Restaure os pacotes NuGet
 dotnet restore
 
+# Certifique-se de que o LocalDB está instalado. Caso não esteja, instale o (https://learn.microsoft.com/pt-br/sql/database-engine/configure-windows/sql-server-express-localdb) ou edite a connection string para apontar para um SQL Server real.
+# Edite o appsettings.Development.json na API
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost;Database=LibraryDb;Trusted_Connection=True;MultipleActiveResultSets=true"
+}
+
 # Acesse a pasta do projeto API
 cd SiemensEnergy.Library.API
 
