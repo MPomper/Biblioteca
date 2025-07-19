@@ -1,9 +1,33 @@
-﻿
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
-//namespace SiemensEnergy.Library.Infrastructure.Data.Extensions
-//{
-//    public class DatabaseExtensions
-//    {
-//        public static async Task InitialiseDatabaseAsync(this WebApplication)
-//    }
-//}
+namespace SiemensEnergy.Library.Infrastructure.Data.Extensions
+{
+    public static class DatabaseExtensions
+    {
+        public static async Task InitialiseDatabaseAsync(this WebApplication app)
+        {
+            using var scope = app.Services.CreateScope();
+
+            var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+            context.Database.MigrateAsync().GetAwaiter().GetResult();
+
+            await SeedAsync(context);
+        }
+        private static async Task SeedAsync(ApplicationDbContext context)
+        {
+            await SeedGeneroAsync(context);
+        }
+
+        private static async Task SeedGeneroAsync(ApplicationDbContext context)
+        {
+            if (!await context.Generos.AnyAsync())
+            {
+                await context.Generos.AddRangeAsync(InitialData.Generos);
+                await context.SaveChangesAsync();
+            }
+        }
+    }
+}

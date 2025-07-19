@@ -6,6 +6,7 @@ using SiemensEnergy.Library.Infrastructure.Repositories;
 using SiemensEnergy.Library.API;
 using FluentValidation.AspNetCore;
 using SiemensEnergy.Library.Application.Validators.Livro;
+using SiemensEnergy.Library.Infrastructure.Data.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,7 +53,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    //await app.InitializeDatabaseAsync();
+    await app.InitialiseDatabaseAsync();
 
     app.UseSwagger();
     app.UseSwaggerUI();
