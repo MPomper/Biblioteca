@@ -69,6 +69,13 @@ npm start
     * Passo 2.
       Após instalado execute o arquivo .exe e siga os passos de instalação padrão do Windows.
 
+* ### Node.js
+  Link de instalação: [Node.js](https://nodejs.org/en/download)
+  * Passo 1.
+      Instale o git
+    * Passo 2.
+      Após instalado execute o arquivo .exe e siga os passos de instalação padrão do node.
+
 *  ### SQL Server Express LocalDB
     Link de instalação: [Sql Server Express LocalDB](https://learn.microsoft.com/pt-br/sql/database-engine/configure-windows/sql-server-express-localdb)
     * Passo 1.
