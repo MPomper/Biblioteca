@@ -23,7 +23,7 @@
 ## 📦 Instalação e Uso  
 
 ```bash
-# Antes de executar os passos a seguir, certifique-se que você tenha instalado o Git e o .NET SDK 7 (ou superior) em seu computador, caso não tenha, favor seguir os passos disponibilizados logo abaixo.
+# Antes de executar os passos a seguir, certifique-se que você tenha instalado o Git, .NET SDK 7 (ou superior) e o Node.js em seu computador, caso não tenha, favor seguir os passos disponibilizados logo abaixo.
 # Escolha uma pasta em seu computador no qual o projeto será clonado
 # Abra um terminal (cmd, bash, etc..) dentro desta pasta e cole o comando abaixo:
 git clone https://github.com/MPomper/Biblioteca.git
@@ -37,13 +37,13 @@ dotnet restore
 # Edite o appsettings.Development.json que está dentro do projeto SiemensEnergy.Library.API, seguindo o passo 5 do tópico SQL Server Express LocalDB em (Passo a Passo instalações necessárias)
 
 # Acesse a pasta do projeto API
-cd SiemensEnergy.Library.API
+cd src/SiemensEnergy.Library.API
 
 # Rode a API
 dotnet run
 
 # Abra outro terminal bash e acesse a pasta do projeto SiemensEnergy.Library.Web
-cd SiemensEnergy.Library.Web
+cd src/SiemensEnergy.Library.Web
 
 # Instale as dependências
 npm install
