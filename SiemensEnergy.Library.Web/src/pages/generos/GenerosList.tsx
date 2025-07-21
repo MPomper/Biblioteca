@@ -42,10 +42,11 @@ const GenerosList = () => {
             <tr>
               <th>Ações</th>
               <th>Gênero</th>
+              <th>Livros</th>
             </tr>
           </thead>
           <tbody>
-            {generos.map((genero) => (
+            {generos.map((genero: Genero) => (
               <tr>
                 <td>
                   <div>
@@ -54,6 +55,7 @@ const GenerosList = () => {
                   </div>
                 </td>
                 <td>{genero.descricao}</td>
+                <td>{genero.livros.join(', ')}</td>
               </tr>
             ))}
           </tbody>

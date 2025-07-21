@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { Autor } from '../models/Autor';
-import { api } from '../services/Api';
+import { autorService } from '../services/autorService';
 
 interface AutoresState {
   data: Autor[];
@@ -20,7 +20,7 @@ export const fetchByIdAutor = createAsyncThunk(
   'autores/fetchById',
   async (id: number, thunkAPI) => {
     try {
-      const response = await api.get<Autor>(`/api/v1.0/Autores/${id}`);
+      const response = await autorService.fetchAutorById(id);
       return response.data;
     } catch (err: any) {
       return thunkAPI.rejectWithValue(err.message);
@@ -32,7 +32,7 @@ export const fetchAllAutores = createAsyncThunk(
   'autores/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const response = await api.get('/api/v1.0/Autores');
+      const response = await autorService.fetchAllAutores();
       return response.data;
     } catch (err: any) {
       return thunkAPI.rejectWithValue(err.message);
@@ -44,7 +44,7 @@ export const createAutor = createAsyncThunk(
   'autores/create',
   async (autor: Omit<Autor, 'id' | 'livros'>, thunkAPI) => {
     try {
-      const response = await api.post<Autor>('/api/v1.0/Autores', autor);
+      const response = await autorService.createAutor(autor);
       return response.data;
     } catch (err: any) {
       if (err.response?.status === 400 && err.response.data?.errors) {
@@ -59,7 +59,7 @@ export const updateAutor = createAsyncThunk(
   'autores/update',
   async ({ autor }: { autor: Autor }, thunkAPI) => {
     try {
-      const response = await api.put(`/api/v1.0/Autores`, autor);
+      const response = await autorService.updateAutor(autor);
       return response.data;
     } catch (err: any) {
       if (err.response?.status === 400 && err.response.data?.errors) {
@@ -74,7 +74,7 @@ export const deleteAutor = createAsyncThunk(
   'autores/delete',
   async (id: number, thunkAPI) => {
     try {
-      await api.delete(`/api/v1.0/Autores/${id}`);
+      await autorService.deleteAutor(id);
       return id;
     } catch (err: any) {
       return thunkAPI.rejectWithValue(err.message);

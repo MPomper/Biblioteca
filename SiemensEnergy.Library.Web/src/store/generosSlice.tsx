@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { Genero } from '../models/Genero';
-import { api } from "../services/Api";
+import { generoService } from "../services/generoService";
 
 interface GenerosState {
   data: Genero[];
@@ -19,7 +19,7 @@ const initialState: GenerosState = {
 export const fetchByIdGenero = createAsyncThunk('generos/fetchById',
   async (id: number, thunkAPI) => {
     try {
-      const response = await api.get<Genero>(`/api/v1.0/Generos/${id}`);
+      const response = await generoService.fetchGeneroById(id);
       return response.data;
     } catch (err: any) {
       return thunkAPI.rejectWithValue(err.message);
@@ -30,7 +30,7 @@ export const fetchByIdGenero = createAsyncThunk('generos/fetchById',
 export const fetchAllGeneros = createAsyncThunk('generos/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const response = await api.get('/api/v1.0/Generos');
+      const response = await generoService.fetchAllGeneros();
       return response.data;
     } catch (err: any) {
       return thunkAPI.rejectWithValue(err.message);
@@ -41,7 +41,7 @@ export const fetchAllGeneros = createAsyncThunk('generos/fetchAll',
 export const createGenero = createAsyncThunk('generos/create',
   async (genero: Omit<Genero, 'id' | 'livros'>, thunkAPI) => {
     try {
-      const response = await api.post<Genero>('/api/v1.0/Generos', genero);
+      const response = await generoService.createGenero(genero);
       return response.data;
     } catch (err: any) {
       if (err.response?.status === 400 && err.response.data?.errors) {
@@ -55,7 +55,7 @@ export const createGenero = createAsyncThunk('generos/create',
 export const updateGenero = createAsyncThunk('generos/update',
   async ({ genero }: { genero: Genero }, thunkAPI) => {
     try {
-      const response = await api.put(`/api/v1.0/Generos`, genero);
+      const response = await generoService.updateGenero(genero);
       return response.data;
     } catch (err: any) {
       if (err.response?.status === 400 && err.response.data?.errors) {
@@ -69,7 +69,7 @@ export const updateGenero = createAsyncThunk('generos/update',
 export const deleteGenero = createAsyncThunk('generos/delete',
   async (id: number, thunkAPI) => {
     try {
-      await api.delete(`/api/v1.0/Generos/${id}`);
+      await generoService.deleteGenero(id);
       return id;
     } catch (err: any) {
       return thunkAPI.rejectWithValue(err.message);

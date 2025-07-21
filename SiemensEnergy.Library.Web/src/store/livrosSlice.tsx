@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { Livro } from '../models/Livro';
-import { api } from "../services/Api";
+import { livroService } from '../services/livroService';
 
 interface LivrosState {
   data: Livro[];
   selected: Livro | null;
+  filtro: Livro[];
   loading: boolean;
   errors: Record<string, string[]> | null;
 }
@@ -12,6 +13,7 @@ interface LivrosState {
 const initialState: LivrosState = {
   data: [],
   selected: null,
+  filtro: [],
   loading: false,
   errors: null,
 };
@@ -19,7 +21,7 @@ const initialState: LivrosState = {
 export const fetchLivroById = createAsyncThunk('livros/fetchById',
   async (id: number, thunkAPI) => {
     try {
-      const response = await api.get<Livro>(`/api/v1.0/Livros/${id}`);
+      const response = await livroService.fetchLivroById(id);
       return response.data;
     } catch (err: any) {
       return thunkAPI.rejectWithValue(err.message);
@@ -30,9 +32,7 @@ export const fetchLivroById = createAsyncThunk('livros/fetchById',
 export const fetchLivroByFiltro = createAsyncThunk('livros/fetchByFiltro',
   async (livro: Omit<Livro, 'id'>, thunkAPI) => {
     try {
-      const response = await api.get<Livro>('/api/v1.0/Livros/buscar', {
-        params: livro
-      });
+      const response = await livroService.fetchLivroByFiltro(livro);
       return response.data;
     } catch (err: any) {
       return thunkAPI.rejectWithValue(err.message);
@@ -43,7 +43,7 @@ export const fetchLivroByFiltro = createAsyncThunk('livros/fetchByFiltro',
 export const fetchAllLivros = createAsyncThunk('livros/fetchAllLivros',
   async (_, thunkAPI) => {
     try {
-      const response = await api.get<Livro[]>('/api/v1.0/Livros');
+      const response = await livroService.fetchAllLivros();
       return response.data;
     } catch (err: any) {
       return thunkAPI.rejectWithValue(err.message);
@@ -54,7 +54,7 @@ export const fetchAllLivros = createAsyncThunk('livros/fetchAllLivros',
 export const createLivro = createAsyncThunk('livros/create',
   async (livro: Omit<Livro, 'id'>, thunkAPI) => {
     try {
-      const response = await api.post<Livro>('/api/v1.0/Livros', livro);
+      const response = await livroService.createLivro(livro);
       return response.data;
     } catch (err: any) {
       if (err.response?.status === 400 && err.response.data?.errors) {
@@ -68,7 +68,7 @@ export const createLivro = createAsyncThunk('livros/create',
 export const updateLivro = createAsyncThunk('livros/update',
   async ({ livro }: { livro: Livro }, thunkAPI) => {
     try {
-      const response = await api.put(`/api/v1.0/Livros`, livro);
+      const response = await livroService.updateLivro(livro);
       return response.data;
     } catch (err: any) {
       if (err.response?.status === 400 && err.response.data?.errors) {
@@ -82,7 +82,7 @@ export const updateLivro = createAsyncThunk('livros/update',
 export const deleteLivro = createAsyncThunk('livros/delete',
   async (id: number, thunkAPI) => {
     try {
-      await api.delete(`/api/v1.0/Livros/${id}`);
+      await livroService.deleteLivro(id);
       return id;
     } catch (err: any) {
       return thunkAPI.rejectWithValue(err.message);
@@ -118,7 +118,8 @@ const livrosSlice = createSlice({
         state.errors = null;
       })
       .addCase(fetchLivroByFiltro.fulfilled, (state, action) => {
-        state.selected = action.payload;
+        state.loading = false;
+        state.filtro = action.payload;
       })
       .addCase(fetchLivroByFiltro.rejected, (state, action) => {
         state.loading = false;

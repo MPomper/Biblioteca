@@ -7,7 +7,6 @@ using SiemensEnergy.Library.Domain.Entities;
 using static SiemensEnergy.Library.Application.Queries.Genero.GeneroQueries;
 using SiemensEnergy.Library.Application.Commands.Genero;
 using AutoMapper;
-using SiemensEnergy.Library.Application.Commands.Autor;
 using SiemensEnergy.Library.Application.DTOs.Genero;
 
 namespace SiemensEnergy.Library.API.Controllers
@@ -60,7 +59,7 @@ namespace SiemensEnergy.Library.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var command = _mapper.Map<UpdateAutorCommand>(dto);
+            var command = _mapper.Map<UpdateGeneroCommand>(dto);
             var result = await _mediator.Send(command);
             return result.Success ? Ok(result) : BadRequest(result);
         }

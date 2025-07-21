@@ -92,7 +92,7 @@ namespace SiemensEnergy.Library.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetById([FromQuery] FiltroLivroDto dto)
+        public async Task<IActionResult> GetByFiltro([FromQuery] FiltroLivroDto dto)
         {
             var livros = await _mediator.Send(new GetLivroByFiltroQuery(dto));
             return livros is not null ? Ok(livros) : NotFound();

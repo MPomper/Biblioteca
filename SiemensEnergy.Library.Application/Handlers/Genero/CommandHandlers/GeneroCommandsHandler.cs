@@ -2,6 +2,7 @@
 using SiemensEnergy.Library.Application.Commands.Genero;
 using SiemensEnergy.Library.Application.Interfaces;
 using SiemensEnergy.Library.Application.Common;
+using AutoMapper;
 
 namespace SiemensEnergy.Library.Application.Handlers.Genero.CommandHandlers
 {
@@ -10,10 +11,12 @@ namespace SiemensEnergy.Library.Application.Handlers.Genero.CommandHandlers
                                         IRequestHandler<DeleteGeneroCommand, Response>
     {
         private readonly IGeneroRepository _generoRepository;
+        private readonly IMapper _mapper;
 
-        public GeneroCommandsHandler(IGeneroRepository generoRepository)
+        public GeneroCommandsHandler(IGeneroRepository generoRepository, IMapper mapper)
         {
             _generoRepository = generoRepository;
+            _mapper = mapper;
         }
 
         public async Task<Response> Handle(CreateGeneroCommand command, CancellationToken cancellationToken)

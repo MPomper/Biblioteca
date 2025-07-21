@@ -16,6 +16,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{34AB8DFC-848F-4811-87F4-34BCC2F72305}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{58344059-A440-4739-BF4F-D78FAE0A25F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiemensEnergy.Library.Application.Tests", "SiemensEnergy.Library.Application.Tests\SiemensEnergy.Library.Application.Tests.csproj", "{0B1241E5-9E08-4C58-99D6-5AEECEA3C7A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,9 +44,20 @@ Global
 		{3AC6F822-BC8F-4DDC-9B8D-897AC2172D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AC6F822-BC8F-4DDC-9B8D-897AC2172D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AC6F822-BC8F-4DDC-9B8D-897AC2172D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B1241E5-9E08-4C58-99D6-5AEECEA3C7A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B1241E5-9E08-4C58-99D6-5AEECEA3C7A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B1241E5-9E08-4C58-99D6-5AEECEA3C7A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B1241E5-9E08-4C58-99D6-5AEECEA3C7A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EC190542-5985-42DE-8F60-9C37AD70B6CB} = {34AB8DFC-848F-4811-87F4-34BCC2F72305}
+		{386FFCD3-F716-42E1-B42F-C975ED4843B5} = {34AB8DFC-848F-4811-87F4-34BCC2F72305}
+		{A5FBC03E-3ED7-4650-93B0-F7E41B4931E7} = {34AB8DFC-848F-4811-87F4-34BCC2F72305}
+		{3AC6F822-BC8F-4DDC-9B8D-897AC2172D7D} = {34AB8DFC-848F-4811-87F4-34BCC2F72305}
+		{0B1241E5-9E08-4C58-99D6-5AEECEA3C7A2} = {58344059-A440-4739-BF4F-D78FAE0A25F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DD5CE060-83B2-4AFC-9375-835616C4395E}

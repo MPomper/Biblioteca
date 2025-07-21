@@ -21,59 +21,101 @@ namespace SiemensEnergy.Library.Application.Handlers.Autor.CommandHandlers
 
         public async Task<Response> Handle(CreateAutorCommand command, CancellationToken cancellationToken)
         {
-            //var autor = _mapper.Map<Domain.Entities.Autor>(command);
-
-            var autor = new Domain.Entities.Autor
+            try
             {
-                Nome = command.Nome
-            };
+                //var autor = _mapper.Map<Domain.Entities.Autor>(command);
 
-            var result = await _autorRepository.CreateAsync(autor);
+                var autor = new Domain.Entities.Autor
+                {
+                    Nome = command.Nome
+                };
 
-            var response = new Response
+                var result = await _autorRepository.CreateAsync(autor);
+
+                var response = new Response
+                {
+                    Success = true,
+                    Data = result,
+                    Message = "Registro incluido com sucesso"
+                };
+
+                return response;
+            }
+            catch (Exception)
             {
-                Success = true,
-                Data = result,
-                Message = "Registro incluido com sucesso"
-            };
+                var response = new Response
+                {
+                    Success = false,
+                    Data = null,
+                    Message = "Registro não foi incluido"
+                };
 
-            return response;
+                return response;
+            }
         }
 
         public async Task<Response> Handle(UpdateAutorCommand command, CancellationToken cancellationToken)
         {
-            //var autor = _mapper.Map<Domain.Entities.Autor>(command);
-
-            var autor = new Domain.Entities.Autor
+            try
             {
-                Id = command.Id,
-                Nome = command.Nome
-            };
+                //var autor = _mapper.Map<Domain.Entities.Autor>(command);
 
-            await _autorRepository.UpdateAsync(autor);
+                var autor = new Domain.Entities.Autor
+                {
+                    Id = command.Id,
+                    Nome = command.Nome
+                };
 
-            var response = new Response
+                await _autorRepository.UpdateAsync(autor);
+
+                var response = new Response
+                {
+                    Success = true,
+                    Data = null,
+                    Message = "Registro alterado com sucesso"
+                };
+
+                return response;
+            }
+            catch (Exception)
             {
-                Success = true,
-                Data = null,
-                Message = "Registro alterado com sucesso"
-            };
+                var response = new Response
+                {
+                    Success = false,
+                    Data = null,
+                    Message = "Registro não foi alterado"
+                };
 
-            return response;
+                return response;
+            }
         }
 
         public async Task<Response> Handle(DeleteAutorCommand command, CancellationToken cancellationToken)
         {
-            await _autorRepository.DeleteAsync(command.Id);
-
-            var response = new Response
+            try
             {
-                Success = true,
-                Data = null,
-                Message = "Registro excluido com sucesso"
-            };
+                await _autorRepository.DeleteAsync(command.Id);
 
-            return response;
+                var response = new Response
+                {
+                    Success = true,
+                    Data = null,
+                    Message = "Registro excluido com sucesso"
+                };
+
+                return response;
+            }
+            catch (Exception)
+            {
+                var response = new Response
+                {
+                    Success = false,
+                    Data = null,
+                    Message = "Registro não foi excluido"
+                };
+
+                return response;
+            }
         }
     }
 }

@@ -34,6 +34,7 @@ const LivrosEdit = () => {
   return (
     <div>
       <h1>Editar Livro</h1>
+      {errors && <p style={{ color: 'red', margin: 0 }}>Erro: {errors.general}</p>}
       <Form id='frmLivro' onSubmit={handleSubmit}>
         <Form.Group className="mb-2" controlId="formTitulo">
           <Form.Label>Título</Form.Label>

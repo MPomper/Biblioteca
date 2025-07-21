@@ -31,6 +31,7 @@ const GenerosEdit = () => {
   return (
     <div>
       <h1>Editar Gênero</h1>
+      {errors && <p style={{ color: 'red', margin: 0 }}>Erro: {errors.general}</p>}
       <Form id='frmGenero' onSubmit={handleSubmit}>
         <Form.Group className="mb-2" controlId="formTitulo">
           <Form.Label>Gênero</Form.Label>

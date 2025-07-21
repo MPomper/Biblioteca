@@ -17,12 +17,12 @@ const LivrosList = () => {
   }, [dispatch]);
 
   const confirmDelete = (livro: Livro) =>
-    {
-      const result = window.confirm(`Tem certeza que deseja excluir o livro "${livro.titulo}"?`);
-      if (result) {
-        dispatch(deleteLivro(livro.id));
-      }
+  {
+    const result = window.confirm(`Tem certeza que deseja excluir o livro "${livro.titulo}"?`);
+    if (result) {
+      dispatch(deleteLivro(livro.id));
     }
+  }
 
   return (
     <div>

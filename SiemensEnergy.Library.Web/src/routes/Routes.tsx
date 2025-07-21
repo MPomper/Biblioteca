@@ -19,7 +19,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar/>
-      <div style={{ padding: '20px' }}>
+      <div style={{ height: '100%', padding: '20px' }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/livros" element={<LivrosList />} />

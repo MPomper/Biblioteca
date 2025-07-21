@@ -47,7 +47,7 @@ const AutoresList = () => {
             </tr>
           </thead>
           <tbody>
-            {autores.map((autor) => (
+            {autores.map((autor: Autor) => (
               <tr>
                 <td>
                   <div>
@@ -56,7 +56,7 @@ const AutoresList = () => {
                   </div>
                 </td>
                 <td>{autor.nome}</td>
-                <td>{autor.livros}</td>
+                <td>{autor.livros.join(', ')}</td>
               </tr>
             ))}
           </tbody>
