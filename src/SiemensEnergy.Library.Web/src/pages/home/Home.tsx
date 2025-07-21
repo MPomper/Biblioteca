@@ -82,7 +82,7 @@ const Home = () => {
                     {autoresList.map((autor: Autor) => (
                       <tr>
                         <td>{autor.nome}</td>
-                        <td>{autor.livros}</td>
+                        <td>{autor?.livros?.length > 0 ? autor.livros.join(', ') : ''}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -105,7 +105,7 @@ const Home = () => {
                     {generosList.map((genero: Genero) => (
                       <tr>
                         <td>{genero.descricao}</td>
-                        <td>{genero.livros.join(', ')}</td>
+                        <td>{genero?.livros?.length > 0 ? genero.livros.join(', ') : ''}</td>
                       </tr>
                     ))}
                   </tbody>

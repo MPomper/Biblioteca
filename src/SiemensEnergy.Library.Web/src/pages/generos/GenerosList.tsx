@@ -55,7 +55,7 @@ const GenerosList = () => {
                   </div>
                 </td>
                 <td>{genero.descricao}</td>
-                <td>{genero.livros.join(', ')}</td>
+                <td>{genero?.livros?.length > 0 ? genero.livros.join(', ') : ''}</td>
               </tr>
             ))}
           </tbody>

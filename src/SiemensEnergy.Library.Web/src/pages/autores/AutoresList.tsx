@@ -56,7 +56,7 @@ const AutoresList = () => {
                   </div>
                 </td>
                 <td>{autor.nome}</td>
-                <td>{autor.livros.join(', ')}</td>
+                <td>{autor?.livros?.length > 0 ? autor.livros.join(', ') : ''}</td>
               </tr>
             ))}
           </tbody>
