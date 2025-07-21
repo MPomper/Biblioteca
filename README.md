@@ -40,7 +40,7 @@ dotnet restore
 cd src/SiemensEnergy.Library.API
 
 # Rode a API
-dotnet run
+dotnet run --launch-profile https
 
 # Abra outro terminal bash e acesse a pasta do projeto SiemensEnergy.Library.Web
 cd src/SiemensEnergy.Library.Web
